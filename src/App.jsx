@@ -1,12 +1,17 @@
-import './App.css'
+import './App.css';
+import CoinTable from './Components/CoinTable/CoinTable';
+import BannerImage from './Components/Banner/Banner';
+import Navbar from './Components/Navbar/Navbar';
 
-function App() {
- 
+function App(){
   return (
     <>
-     <h1>Hello</h1>
+    
+      <Navbar />
+      <BannerImage />
+      <CoinTable/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
