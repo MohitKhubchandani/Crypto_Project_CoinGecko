@@ -15,7 +15,7 @@ function Banner() {
             Crypto Tracker
           </div>
           <div className='font-semibold text-white md:text-xl'>
-            Get all info regarding cryptocurrencies
+          Explore Cryptocurrency Coin Data
           </div>
         </div>
       </div>
