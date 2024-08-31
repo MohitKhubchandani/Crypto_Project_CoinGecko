@@ -1,12 +1,17 @@
 import {useState} from 'react';
 import { fetchCointData } from '../Navbar/fetchCoinData';
 import { useQuery } from 'react-query';
-import formatIndianCurrency from '../../services/CurrencyFormater/CurrencyFormater';
+import formatIndianCurrency from '../../services/CurrencyFormater';
+import {useContext} from 'react';
+import { CurrencyContext } from '../../Context/CurrencyContext';
+
 
 function CoinTable() {
 
+  const { Currency } = useContext(CurrencyContext)
+
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error} = useQuery(['coin', page], () => fetchCointData(page, 'usd'),{
+  const { data, isLoading, isError, error} = useQuery(['coin', page, Currency], () => fetchCointData(page, Currency),{
     // retry: 2,
     // retryDelay: 1000,
     cacheTime: 1000 * 60 * 2,
@@ -59,13 +64,13 @@ function CoinTable() {
                 </div>
 
                 <div className="basis-[25%]">
-                  {formatIndianCurrency(coin.high_24h)}
+                  {formatIndianCurrency(coin.high_24h , Currency)}
                 </div>
                 <div className="basis-[20%]">
-                  {formatIndianCurrency(coin.current_price)}
+                  {formatIndianCurrency(coin.current_price, Currency)}
                 </div>
                 <div className="basis-[20%]">
-                  {formatIndianCurrency(coin.market_cap)}
+                  {formatIndianCurrency(coin.market_cap, Currency)}
                 </div>
             </div>
           )
@@ -75,14 +80,20 @@ function CoinTable() {
       <div className='flex gap-4 justify-center items-center'>
                   <button 
                   disabled={page === 1}
-                  onClick={() => setPage(page - 1)} 
+                  onClick={() => {
+                    setPage(page - 1),
+                    window.scrollTo({ top: 540, behavior: 'auto' })
+                  }} 
                   className='btn btn-primary btn-wide hover:bg-yellow-400  border-none text-black text-2xl'
                   >
                   Prev
                   </button>
                   
                   <button 
-                  onClick={() => setPage(page + 1)} 
+                  onClick={() => {
+                    setPage(page + 1),
+                    window.scrollTo({ top: 540, behavior: 'auto' })
+                  }} 
                   className='btn btn-secondary btn-wide hover:bg-yellow-400 bg-blue-400 border-none text-black text-2xl'
                   >
                   Next
