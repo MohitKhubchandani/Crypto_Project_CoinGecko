@@ -1,11 +1,11 @@
-function formatIndianCurrency(amount, currency = 'INR') {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: currency.toLowerCase(),
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }).format(amount);
-}
+function CurrencyFormater(amount, Currency) {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: Currency.toUpperCase(),
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+  }
+  
 
-
-export default formatIndianCurrency;
+export default CurrencyFormater;

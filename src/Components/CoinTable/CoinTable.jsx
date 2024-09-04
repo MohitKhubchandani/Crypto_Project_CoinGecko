@@ -1,10 +1,9 @@
 import {useState} from 'react';
-import { fetchCointData } from '../Navbar/fetchCoinData';
+import { fetchCointData } from '../../services/fetchCoinData';
 import { useQuery } from 'react-query';
-import formatIndianCurrency from '../../services/CurrencyFormater';
 import {useContext} from 'react';
 import { CurrencyContext } from '../../Context/CurrencyContext';
-
+import CurrencyFormater from '../../services/CurrencyFormater';
 
 function CoinTable() {
 
@@ -64,13 +63,13 @@ function CoinTable() {
                 </div>
 
                 <div className="basis-[25%]">
-                  {formatIndianCurrency(coin.high_24h , Currency)}
+                  {CurrencyFormater(coin.high_24h, Currency) }
                 </div>
                 <div className="basis-[20%]">
-                  {formatIndianCurrency(coin.current_price, Currency)}
+                  {CurrencyFormater(coin.current_price, Currency)}
                 </div>
                 <div className="basis-[20%]">
-                  {formatIndianCurrency(coin.market_cap, Currency)}
+                  {CurrencyFormater(coin.market_cap, Currency)}
                 </div>
             </div>
           )
