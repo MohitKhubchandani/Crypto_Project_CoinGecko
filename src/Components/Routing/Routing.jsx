@@ -1,10 +1,14 @@
-import {Routes, Route} from 'react-router-dom'
 import Home from '../../Pages/Home';
+import CointdetailsPage from '../../Pages/CoinDetailsPage';
+import { Route, Routes } from 'react-router-dom';
 
 function Routing(){
+
+
  return (
   <Routes>
     <Route path='/' element={<Home/>}/>
+    <Route path='/details/:coinId' element={<CointdetailsPage/>}/>
   </Routes>
  )
 };

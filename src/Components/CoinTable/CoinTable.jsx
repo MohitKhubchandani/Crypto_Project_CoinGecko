@@ -4,11 +4,13 @@ import { useQuery } from 'react-query';
 import {useContext} from 'react';
 import { CurrencyContext } from '../../Context/CurrencyContext';
 import CurrencyFormater from '../../services/CurrencyFormater';
+import { useNavigate } from 'react-router-dom';
 
 function CoinTable() {
 
   const { Currency } = useContext(CurrencyContext)
 
+  const navigate = useNavigate()
   const [page, setPage] = useState(1);
   const { data, isLoading, isError, error} = useQuery(['coin', page, Currency], () => fetchCointData(page, Currency),{
     // retry: 2,
@@ -17,6 +19,9 @@ function CoinTable() {
     staleTime: 1000 * 60 * 2,
   });
   
+  function handleCoinRedirect(id){
+    navigate(`/details/${id}`)
+  }
 
 
   if(isError){
@@ -49,15 +54,15 @@ function CoinTable() {
 
         {data && data.map((coin) => {
           return (
-            <div key={coin.id} className='w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between'>
-                <div className='flex items-center justify-start gap-3 basis-[35%]'>
+            <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className='w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between'>
+                <div className='flex items-center justify-start gap-3 basis-[35%] cursor-pointer'>
                   
                   <div className='w-[5rem] h-[5rem]'>
                     <img src={coin.image} className='w-full h-full' />
                   </div>
                 
                   <div className='flex flex-col'>
-                   <div className='text-3xl'>{coin.name}</div>
+                   <div className='text-3xl hover:text-yellow-400'>{coin.name}</div>
                    <div className='xl'>{coin.symbol}</div>
                   </div>
                 </div>

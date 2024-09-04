@@ -6,7 +6,7 @@ import Routing from './Components/Routing/Routing';
 
 function App(){
 
-  const [Currency, setCurrency] = useState() 
+  const [Currency, setCurrency] = useState('usd') 
 
   return (
     <>
