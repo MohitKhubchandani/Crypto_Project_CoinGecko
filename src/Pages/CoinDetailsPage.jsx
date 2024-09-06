@@ -17,7 +17,7 @@ function CointdetailsPage(){
   })
   
   if (isLoading) {
-    return <div>Loading...</div>
+    return;
   };
 
   if (isError) {
