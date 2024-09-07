@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import MainLayout from '../../Pages/Layout';
 import { lazy , Suspense} from 'react';
+import CustomErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 const Home = lazy(() => import('../../Pages/Home'))
 const CoinDetailsPage = lazy(() => import('../../Pages/CoinDetailsPage'))
@@ -9,6 +10,8 @@ function Routing(){
 
 
  return (
+  <CustomErrorBoundary>
+
   <Routes>
     <Route path='/' element={<MainLayout/>}>
     
@@ -44,6 +47,8 @@ function Routing(){
       } />
     </Route>
   </Routes>
+
+  </CustomErrorBoundary>
  )
 };
 
