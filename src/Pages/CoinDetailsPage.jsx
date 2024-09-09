@@ -5,6 +5,7 @@ import parse from 'html-react-parser'
 import { CurrencyContext } from "../Context/CurrencyContext";
 import { useContext } from "react";
 import CurrencyFormater from "../services/CurrencyFormater";
+import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
 function CointdetailsPage(){
 
   const {coinId} = useParams();
@@ -61,7 +62,7 @@ function CointdetailsPage(){
       </div>
 
       <div className="md:w-2/3 w-full p-6">
-        Coin Information
+      <CoinInfoContainer coinId={coinId}/>
       </div>
 
     </div>
