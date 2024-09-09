@@ -11,7 +11,9 @@ function CoinTable() {
   const { Currency } = useContext(CurrencyContext)
 
   const navigate = useNavigate()
+  
   const [page, setPage] = useState(1);
+
   const { data, isLoading, isError, error} = useQuery(['coin', page, Currency], () => fetchCointData(page, Currency),{
     // retry: 2,
     // retryDelay: 1000,

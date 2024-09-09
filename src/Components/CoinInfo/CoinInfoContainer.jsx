@@ -1,23 +1,11 @@
-import { useQuery } from "react-query";
 import CoinInfo from "./CoinInfo";
-import { CurrencyContext } from "../../Context/CurrencyContext";
-import { useContext, useState } from "react";
-import { fetchCointHistoricDetails } from "../../services/fetchCoinHistoricData";
 import Alert from "../Alert/Alert";
+import useFetchCoinHistory from "../../Hooks/useFetchCoinsHistory";
+
 
 function CoinInfoContainer({coinId}){
     
-    const { Currency } = useContext(CurrencyContext)
-
-    const [days, setDays] = useState(7)
-
-    const [interval, setCoinInterval] = useState('daily')
-
-    const {data : historicData, isLoading, isError} = useQuery(['coinHistoricData', coinId, Currency, days], () => fetchCointHistoricDetails(coinId, interval, days, Currency),
-    {
-    cacheTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2,
-    })
+    const [historicData, isLoading, isError, Currency, days, setDays, setCoinInterval] = useFetchCoinHistory(coinId);
 
     if (isLoading) {
         return <span className='loading loading-spinner loading-lg'></span>

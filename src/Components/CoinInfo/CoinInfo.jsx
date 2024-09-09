@@ -2,44 +2,24 @@ import Alert from "../Alert/Alert";
 import {Line} from 'react-chartjs-2';
 import { CategoryScale } from 'chart.js'
 import Chart from 'chart.js/auto';
+import { chartDays } from "../../helpers/constants";
+
+Chart.register(CategoryScale)
 
 function CoinInfo({historicData, setDays, setCoinInterval, days, Currency}){
 
-    const chartDays = [
-        {
-            label: '24 Hours',
-            value: 1
-        },
-        {
-            label: '7 Hours',
-            value: 7
-        },
-        {
-            label: '30 Hours',
-            value: 30
-        },
-        {
-            label: '90 Hours',
-            value: 90
-        },
-        {
-            label: '365 Hours',
-            value: 365
-        },
-    ]
-
+    
     function handleDayChange(event) {
         const daysSelected = event.target.options[event.target.selectedIndex].value;
         if (daysSelected === "1") {
-            setCoinInterval('');
+            setCoinInterval?.('');
         } else {
-            setCoinInterval('daily');
+            setCoinInterval?.('daily');
         }
-        setDays(daysSelected);
+        setDays?.(daysSelected);
     }
     
     
-    Chart.register(CategoryScale)
 
     if(!historicData){
      <Alert message='No Data Available' type='info'/>

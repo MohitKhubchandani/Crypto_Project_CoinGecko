@@ -1,21 +1,15 @@
-import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
-import { fetchCointDetails } from "../services/fetchCoinDetails";
 import parse from 'html-react-parser'
-import { CurrencyContext } from "../Context/CurrencyContext";
-import { useContext } from "react";
 import CurrencyFormater from "../services/CurrencyFormater";
 import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
+import useFetchCoin from '../Hooks/useFetchCoin';
+import { useParams } from 'react-router-dom';
+
 function CointdetailsPage(){
 
-  const {coinId} = useParams();
+  const {coinId} = useParams()
 
-  const { Currency } = useContext(CurrencyContext)
+  const {Currency, isError, isLoading, coin} = useFetchCoin(coinId);
 
-  const { isError , isLoading,  data : coin} = useQuery(['coin', coinId], () => fetchCointDetails(coinId),{
-    cacheTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2,
-  })
   
   if (isLoading) {
     return;
@@ -32,11 +26,11 @@ function CointdetailsPage(){
         <img src={coin?.image?.large} alt={coin?.name} className="h-52 mb-5"/>
      
         <h1 className="font-bold text-4xl mb-5">
-        {coin.name}
+        {coin?.name}
         </h1>
 
         <p className="w-full px-6 py-4 text-justify">
-          {parse(coin.description?.en)}
+          {parse(coin?.description?.en)}
         </p>
 
         <div className="w-full flex flex-col md:flex-row md:justify-around">
