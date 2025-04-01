@@ -1,7 +1,12 @@
 # 🚀 Crypto Project CoinGecko
 
-![Crypto Project](https://your-image-url.com/banner.png)  
 *A real-time cryptocurrency tracking application using the CoinGecko API.*
+
+![Screenshot (64)](https://github.com/user-attachments/assets/2575ab09-e9be-4b63-8117-4620e15ba188)
+
+![Screenshot (62)](https://github.com/user-attachments/assets/2b5b5b35-5df8-4653-8942-4ea5ef7c5f52)
+
+![Screenshot (63)](https://github.com/user-attachments/assets/cd6f0491-a906-478e-8ea4-92c4c95dab9b)
 
 ## 🌟 Features
 
@@ -60,6 +65,7 @@ This project uses the CoinGecko API. Follow these steps:
 3. Add your API key:
 ```sh
 VITE_COINGECKO_API_KEY=your_api_key_here
+COINGECKO_API_URL = 'https://api.coingecko.com/api/v3'
 ```
 
 ## 📂 Project Structure
@@ -78,10 +84,10 @@ Crypto_Project_CoinGecko/
 
 ## 🏗 Roadmap
 
-- [ ] Implement search functionality 🔍
-- [ ] Add historical price charts 📊
-- [ ] Introduce user authentication 🔑
-- [ ] Deploy on Vercel 🚀
+-  Implement search functionality 🔍
+-  Add historical price charts 📊
+-  Introduce user authentication 🔑
+-  Deploy on Vercel 🚀
 
 ## 🤝 Contributing
 
